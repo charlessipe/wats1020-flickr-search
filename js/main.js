@@ -7,7 +7,45 @@
 // Allow users to click the images to see a larger version with more information.
 $(document).on('ready', function(){
     // Place your code here, inside the document ready handler.
-
+  
+    
+  
+    var searchImages = function(tags){
+      var flickerAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+      
+      //var tagName = document.getElementById('flickr-tag').value;
+      //console.log(tagName);
+      
+      $.getJSON( flickerAPI, {
+        tags: tags,
+        tagmode: "any",
+        format: "json"
+      })
+        .done(function( data ) {
+          $.each( data.items, function( i, item ) {
+            console.log(item.media.m);
+            
+            $( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
+            /*
+            if ( i === 3 ) {
+              return false;
+            }
+            */
+          });
+        });
+      
+    };
+  
+    $( "#flickr-button" ).click(function() {
+        event.preventDefault();
+        alert( "Handler for .click() called." );
+        var tagName = document.getElementById('flickr-tag').value;
+        console.log(tagName);
+        searchImages(tagName);
+      });
+  
+    
+  
     // Create a function called `searchImages()`. This function will handle the
     // process of taking a user's search terms and sending them to Flickr for a
     // response.
