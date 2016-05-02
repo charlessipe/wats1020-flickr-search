@@ -13,15 +13,15 @@ $(document).on('ready', function(){
     var searchImages = function(tags){
       var flickerAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
       
-      //var tagName = document.getElementById('flickr-tag').value;
-      //console.log(tagName);
-      
       $.getJSON( flickerAPI, {
         tags: tags,
         tagmode: "any",
         format: "json"
       })
         .done(function( data ) {
+          
+          $("#images img").remove(); // remove previous images from page
+        
           $.each( data.items, function( i, item ) {
             console.log(item.media.m);
             
@@ -38,9 +38,9 @@ $(document).on('ready', function(){
   
     $( "#flickr-button" ).click(function() {
         event.preventDefault();
-        alert( "Handler for .click() called." );
+
         var tagName = document.getElementById('flickr-tag').value;
-        console.log(tagName);
+
         searchImages(tagName);
       });
   
