@@ -22,7 +22,7 @@ $(document).on('ready', function(){
         .done(function( data ) {
           
           $("#images img").remove(); // remove previous images from page
-          $("#images ul").remove(); // remove previous data
+          $("#images li").remove(); // remove previous data
         
           $.each( data.items, function( i, item ) {
             //console.log(item.media.m);
@@ -38,10 +38,14 @@ $(document).on('ready', function(){
             var author = item.author;
             var link = item.link;
             
-            $( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
-            //$( "#images" ).append("<ul>" + title + "<br>" + date_taken + "<br>" + description + "</ul>" + "<br>");
-            $( "#images" ).append( "<ul><li>" + title + "</li><li>" + date_taken + "</li><li>" + description + "</li><li>" + author + "</li><li>" + link + "</li></ul>");
+            //$( "<img>").append("<div class='col-xs-4'");
             
+            //$( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
+            
+            //$( "#images" ).append("<ul>" + title + "<br>" + date_taken + "<br>" + description + "</ul>" + "<br>");
+            $( "#images" ).append( "<div class='col-xs-4'><ul><li><img src='" + item.media.m + "'></li>" + "<li>" + title + "</li><li>" + date_taken + "</li><li>" + description + "</li><li>" + author + "</li><li>" + link + "</li></ul></div>");
+            
+            //$( "<img>").append("</div>");
             //$( "<img> li[i]").text("hi").appendTo("")
             /*
             if ( i === 3 ) {
