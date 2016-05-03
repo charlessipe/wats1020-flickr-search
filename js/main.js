@@ -5,6 +5,7 @@
 // of tags and view the images that are found.
 //
 // Allow users to click the images to see a larger version with more information.
+
 $(document).on('ready', function(){
     // Place your code here, inside the document ready handler.
   
@@ -21,11 +22,27 @@ $(document).on('ready', function(){
         .done(function( data ) {
           
           $("#images img").remove(); // remove previous images from page
+          $("#images ul").remove(); // remove previous data
         
           $.each( data.items, function( i, item ) {
-            console.log(item.media.m);
+            //console.log(item.media.m);
+            console.log(item.title);
+            console.log(item.date_taken);
+            console.log(item.description);
+            console.log(item.author);
+            console.log(item.link);
+            
+            var title = item.title;
+            var date_taken = item.date_taken;
+            var description = item.description;
+            var author = item.author;
+            var link = item.link;
             
             $( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
+            //$( "#images" ).append("<ul>" + title + "<br>" + date_taken + "<br>" + description + "</ul>" + "<br>");
+            $( "#images" ).append( "<ul><li>" + title + "</li><li>" + date_taken + "</li><li>" + description + "</li><li>" + author + "</li><li>" + link + "</li></ul>");
+            
+            //$( "<img> li[i]").text("hi").appendTo("")
             /*
             if ( i === 3 ) {
               return false;
