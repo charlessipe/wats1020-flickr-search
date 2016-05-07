@@ -10,7 +10,7 @@ ul#images ul {
     height: 500px;
     position: relative;
     float: left;
-    overflow: hidden;
+    overflow: scroll;
 }
 
 ul#images li img {
@@ -37,6 +37,7 @@ ul#images ul {
     list-style-type: none; 
     background-color: #008CBA;
     margin: 20px;
+    padding: 10px;
 }
 
 ul#images .placeholder {
