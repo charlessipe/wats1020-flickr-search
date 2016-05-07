@@ -32,6 +32,7 @@ $(document).on('ready', function(){
             console.log(item.author);
             console.log(item.link);
             
+            var image = item.media.m;
             var title = item.title;
             var date_taken = item.date_taken;
             var description = item.description;
@@ -42,8 +43,11 @@ $(document).on('ready', function(){
             
             //$( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
             
-            //$( "#images" ).append("<ul>" + title + "<br>" + date_taken + "<br>" + description + "</ul>" + "<br>");
-            $( "#images" ).append( "<div class='col-xs-4'><ul><li><img src='" + item.media.m + "'></li>" + "<li>" + title + "</li><li>" + date_taken + "</li><li>" + description + "</li><li>" + author + "</li><li>" + link + "</li></ul></div>");
+            $( "#images" ).append( "<ul><li>" + "Title: " + title + "</li><li>" + "Date taken: "+ date_taken + "</li><li>" + "Description: "+ description + "</li><li>" + "Author: "+ author + "</li><li>" + "Link: "+ link + "</li></ul>");
+            
+            //<li><img src='" + image + "'></li>" +
+            
+            //<div class='col-xs-4'><ul>   </ul></div>
             
             //$( "<img>").append("</div>");
             //$( "<img> li[i]").text("hi").appendTo("")
@@ -58,11 +62,11 @@ $(document).on('ready', function(){
     };
   
     $( "#flickr-button" ).click(function() {
-        event.preventDefault();
+        event.preventDefault();  // prevent button from submitting
 
-        var tagName = document.getElementById('flickr-tag').value;
+        var tagName = document.getElementById('flickr-tag').value;  // get value of Flicker search input field
 
-        searchImages(tagName);
+        searchImages(tagName);  // execute searchImages function
       });
   
     
