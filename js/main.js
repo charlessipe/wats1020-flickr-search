@@ -22,7 +22,7 @@ $(document).on('ready', function(){
         .done(function( data ) {
           
           $("#images img").remove(); // remove previous images from page
-          $("#images li").remove(); // remove previous data
+          $("#images ul").remove(); // remove previous data
         
           $.each( data.items, function( i, item ) {
             //console.log(item.media.m);
